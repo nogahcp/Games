@@ -233,7 +233,7 @@ class ViewController: UIViewController {
     
     private func makePhoneMove() {
         self.timer = Timer.scheduledTimer(withTimeInterval: self.getRandomTime(), repeats: true, block: { timer in
-            if self.setGame.makePhoneMove() {
+            if self.setGame.possibleMoveExist() {
                 self.iPhoneFace = "😁"
                 self.updateViewFromModel()
                 _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: {_ in
