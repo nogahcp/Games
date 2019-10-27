@@ -26,16 +26,19 @@ class ConcentrationModel
     
     func cardFlip(cardIndex:Int)
     {
+        //consider only cards that didnt match yet
         if !cards[cardIndex].isMatch
         {
-            // this is where we need to explain the logic
+            // if there is already card with faceUp, check for match
             if let matchIndex = flippedCard, matchIndex != cardIndex {
+                //match
                 if cards[matchIndex].ID == cards[cardIndex].ID
                 {
                     cards[cardIndex].isMatch = true
                     cards[matchIndex].isMatch = true
                     score+=2
                 }
+                //mismatch
                 else
                 {
                     if cards[cardIndex].countFlips > 0
@@ -51,6 +54,7 @@ class ConcentrationModel
                 cards[cardIndex].countFlips += 1
                 flippedCard = nil
             }
+            //this is the first card to be with faceUp - flip down all other cards
             else
             {
                 for currCard in cards.indices
